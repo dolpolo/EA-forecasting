@@ -1,28 +1,40 @@
-# EA-forecasting
+# Master's Thesis
 
-## Master's Thesis: A Comparison Between Several Approaches to Forecasting Using Many Predictors
+## Forecasting Euro Area Macroeconomic Indicators: A Comparative Analysis of Machine Learning Methods and Their Implications for Shaping Monetary Policy
 
-### Replication Files for the Paper
-**“A Comparative Study of Machine Learning Models for Forecasting Key Macroeconomic Indicators: How COVID-19 Betrayed Expectations”**
+### Main References:
+- **De Mol, Christine, Domenico Giannone, and Lucrezia Reichlin (2008). “Forecasting using a large number of predictors: Is Bayesian shrinkage a valid alternative to principal components?”**
+- **Fan, Jianqing, Yuan Ke, and Kaizheng Wang (2020). “Factor-adjusted regularized model selection”**
+- **Fan, Jianqing, Yuan Ke, and Kaizheng Wang (2020). “Factor-adjusted regularized model selection”**
+- **Kelly, Bryan and Seth Pruitt (2015). “The three-pass regression filter: A new approach to forecasting using many predictors”**
+- **Chow, Gregory C and An-loh Lin (1971). “Best linear unbiased interpolation, distribution, and extrapolation of time series by related series”**
 
-Authors:  
-- **Chiara Perugini**, University of Bologna  
-- **Davide Delfino**, University of Bologna  
-- **Mohammad Kouzehgar Kaleji**, University of Bologna  
-- **Sara Tozzi**, University of Bologna  
+Author: 
+- **Davide Delfino**, University of Bologna
 
 ---
 
 ## Overview
-This project trains and compares the forecasting performances of alternative forecasting methods for high-dimensional macroeconomic data. The main R scripts involved are:  
+This project trains and compares the forecasting performances of alternative forecasting methods for high-dimensional macroeconomic data. 
+The main R scripts involved are:  
+- `Tempdisagg.R`  
 - `Bayesian_Shrinkage.R`  
-- `FarmSelect.R`  
+- `FarmSelect.R`
+- `ThreePassRegression.R`
 
 The outputs include:
 1. Factor model forecasts (**Principal Components Regression**, PCR).  
 2. Bayesian regression with i.i.d. normal prior (**Ridge Regression**).  
 3. Bayesian regression with i.i.d. Laplace prior (**LASSO Regression**).  
 4. Factor-Adjusted model (**FarmSelect**).
+5. Three Pass Regression filter model (**TPR**)
+6. Tempdisagg 
+
+The main MATLAB scripts involved are: 
+- `Nowcasting.m`
+
+The outputs include:
+1. Nowcasts (**Nowcast**).  
 
 The data used in this project were retrieved from:  
 **Barigozzi, M., & Lissona, C. (2024)**: *EA-MD-QD: Large Euro Area and Euro Member Countries Datasets for Macroeconomic Research (Version 12.2023)*.  
@@ -34,14 +46,22 @@ The data used in this project were retrieved from:
 
 ### Main Scripts
 - **`Bayesian_Shrinkage.R`**: Trains and compares forecasting methods for PCR, Ridge, and LASSO.  
-- **`FarmSelect.R`**: Implements the Factor-Adjusted Regression Model (FarmSelect).  
+- **`FarmSelect.R`**: Implements the Factor-Adjusted Regression Model (FarmSelect).
+- **`ThreePassRegression.R`**: Implements the Factor-Adjusted Regression Model (FarmSelect).
+- **`Nowcast.m`**: Implements the Factor-Adjusted Regression Model (FarmSelect).  
 - **`Forecasting_methods.R`**: Produces out-of-sample forecasts for all models.  
-- **`Covid_predictions.R`**: Produces counterfactual forecasts for the best-performing models during the COVID-19 pandemic (2020).  
+- **`2025_predictions.R`**: Produces counterfactual forecasts for the best-performing models for 2025.  
 
-### Supporting Scripts in `R/functions`:
-- **`Bayesian_shrinkage_functions.R`**: Defines parameters and computes forecasts for PCR, LASSO, and Ridge regression.  
-- **`FarmSelect_functions.R`**: Defines parameters and computes forecasts for FarmSelect.
+### Supporting Scripts
 
+- **`R/functions`:**
+- `Tempdisagg.R`: Performs a temporal diaggregation for target variables to be compared with nowcasting
+- `Bayesian_shrinkage_functions.R`: Defines parameters and computes forecasts for PCR, LASSO, and Ridge regression.  
+- `FarmSelect_functions.R`: Defines parameters and computes forecasts for FarmSelect.
+- `FarmSelect_functions.R`: Defines parameters and computes forecasts for FarmSelect.
+
+- **`MATLAB/functions`:**
+- `Nowcast_functions.m`: Defines parameters and computes forecasts for PCR, LASSO, and Ridge regression.
 ---
 
 ## Instructions
